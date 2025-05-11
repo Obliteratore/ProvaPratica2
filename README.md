@@ -12,12 +12,12 @@ Audit done.
 [INFO] --- jacoco:0.8.13:check (check) @ roman-number ---
 [INFO] Loading execution data file /home/runner/work/ProvaPratica2/ProvaPratica2/roman-number/target/jacoco.exec
 [INFO] Analyzed bundle 'roman-number' with 2 classes
-[WARNING] Rule violated for bundle roman-number: lines covered ratio is 0.45, but expected minimum is 0.85
+[WARNING] Rule violated for bundle roman-number: lines covered ratio is 0.62, but expected minimum is 0.85
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  8.860 s
-[INFO] Finished at: 2025-05-11T13:30:23Z
+[INFO] Total time:  3.982 s
+[INFO] Finished at: 2025-05-11T14:05:07Z
 [INFO] ------------------------------------------------------------------------
 [ERROR] Failed to execute goal org.jacoco:jacoco-maven-plugin:0.8.13:check (check) on project roman-number: Coverage checks have not been met. See log for details. -> [Help 1]
 [ERROR] 
@@ -31,5 +31,5 @@ Audit done.
 ```csv
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 roman-number,it.unipd.mtss,IntegerToRoman,8,155,1,7,2,11,2,4,1,1
-roman-number,it.unipd.mtss,RomanPrinter,140,227,19,5,24,11,14,5,1,3
+roman-number,it.unipd.mtss,RomanPrinter,94,273,13,11,16,19,10,9,1,3
 ```
