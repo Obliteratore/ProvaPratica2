@@ -2,15 +2,14 @@ package it.unipd.mtss;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-
 public class RomanPrinterTest {
 
-    private static final String[][] I_REPRESENTATION = {{
+    private static final String[][] I_REPRESENTATION = {
         "  _____  ",
         " |_   _| ",
-        "   | |   ",
-        "   | |   ",
-        "  |___|  "}
+		"   | |   ",
+		"   | |   ",
+		"  |___|  "
     };
 
     @Test
@@ -37,6 +36,6 @@ public class RomanPrinterTest {
     @Test
     void print_shouldThrowException_whenInputIsInvalid() {
         assertThrows(IllegalArgumentException.class, () -> RomanPrinter.print(0));
-    } 
+    }
 
 }
