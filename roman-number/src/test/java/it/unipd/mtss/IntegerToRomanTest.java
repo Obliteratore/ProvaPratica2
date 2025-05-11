@@ -18,7 +18,7 @@ public class IntegerToRomanTest {
     }
 
     @Test
-    public void convert_shouldReturnI_whenInputIs3() {
+    public void convert_shouldReturnIII_whenInputIs3() {
         // Arrange
         int number = 3;
 
@@ -28,8 +28,97 @@ public class IntegerToRomanTest {
         // Assert
         assertEquals("III", result);
     }
+	
+	@Test
+    public void convert_shouldReturnL_whenInputIs50() {
+        // Arrange
+        int number = 50;
 
-     @Test
+        // Act
+        String result = IntegerToRoman.convert(number);
+
+        // Assert
+        assertEquals("L", result);
+    }
+	
+	@Test
+    public void convert_shouldReturnLXXXVII_whenInputIs87() {
+        // Arrange
+        int number = 87;
+
+        // Act
+        String result = IntegerToRoman.convert(number);
+
+        // Assert
+        assertEquals("LXXXVII", result);
+    }
+	
+	@Test
+    public void convert_shouldReturnC_whenInputIs100() {
+        // Arrange
+        int number = 100;
+
+        // Act
+        String result = IntegerToRoman.convert(number);
+
+        // Assert
+        assertEquals("C", result);
+    }
+	
+	@Test
+    public void convert_shouldReturnCDXXI_whenInputIs421() {
+        // Arrange
+        int number = 421;
+
+        // Act
+        String result = IntegerToRoman.convert(number);
+
+        // Assert
+        assertEquals("CDXXI", result);
+    }
+	
+	@Test
+    public void convert_shouldReturnD_whenInputIs500() {
+        // Arrange
+        int number = 500;
+
+        // Act
+        String result = IntegerToRoman.convert(number);
+
+        // Assert
+        assertEquals("D", result);
+    }
+	
+	@Test
+    public void convert_shouldReturnCMXCIX_whenInputIs999() {
+        // Arrange
+        int number = 999;
+
+        // Act
+        String result = IntegerToRoman.convert(number);
+
+        // Assert
+        assertEquals("CMXCIX", result);
+    }
+	
+	@Test
+    public void convert_shouldReturnM_whenInputIs1000() {
+        // Arrange
+        int number = 1000;
+
+        // Act
+        String result = IntegerToRoman.convert(number);
+
+        // Assert
+        assertEquals("M", result);
+    }
+
+	@Test
+    void convert_shouldThrowException_whenInputIsOutOfBounds() {
+        assertThrows(IllegalArgumentException.class, () -> IntegerToRoman.convert(1001));
+    }
+
+    @Test
     void convert_shouldThrowException_whenInputIsZero() {
         assertThrows(IllegalArgumentException.class, () -> IntegerToRoman.convert(0));
     }
