@@ -1,0 +1,51 @@
+name: Build Automation with GitHub actions
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v3
+      with:
+        java-version: '8'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Code Coverage with JaCoCo and Build with Maven
+      run: |
+        mkdir -p Report
+        cd roman-number
+        mvn clean verify jacoco:report checkstyle:checkstyle | tee ../Report/build.log
+
+    - name: Write build report on README.md
+      run: |
+        echo "# Build & Coverage Report" > Report/report.md
+        echo "## Build Log (last 25 rows):" >> Report/report.md
+        echo '```' >> Report/report.md
+        tail -n 25 Report/build.log >> Report/report.md
+        echo "" >> Report/report.md
+        echo "## CSV of Jacoco Code Coverage:" >> Report/report.md
+        echo '```csv' >> Report/report.md
+        head -n 1 roman-number/target/site/jacoco/jacoco.csv >> Report/report.md
+        tail -n +2 roman-number/target/site/jacoco/jacoco.csv >> Report/report.md
+        echo '```' >> Report/report.md
+        cat Report/report.md > README.md
+        
+    - name: Commit the README.md
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+        git add README.md
+        git commit -m "README.md updated with Build log"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
