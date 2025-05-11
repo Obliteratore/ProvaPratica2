@@ -171,7 +171,9 @@ public class RomanPrinterTest {
         // Arrange
         int input = 87;
         String expectedOutput = buildAsciiArt(L_REPRESENTATION);
-		for (int i=1; i<=3; i++) expectedOutput += buildAsciiArt(X_REPRESENTATION);
+		for (int i=1; i<=3; i++) {
+		 	expectedOutput += buildAsciiArt(X_REPRESENTATION);
+		}
 		expectedOutput += buildAsciiArt(V_REPRESENTATION);
 		expectedOutput += buildAsciiArt(I_REPRESENTATION);
 		expectedOutput += buildAsciiArt(I_REPRESENTATION);
@@ -249,6 +251,7 @@ public class RomanPrinterTest {
         // Arrange
         int input = 1000;
         String expectedOutput = buildAsciiArt(M_REPRESENTATION);
+    }
 
     @Test
     void print_shouldThrowException_whenInputIsInvalid() {
