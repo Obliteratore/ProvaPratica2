@@ -26,19 +26,23 @@ jobs:
         cd roman-number
         mvn clean verify jacoco:report checkstyle:checkstyle | tee ../Report/build.log
 
-    - name: Write build report on README.md
-      run: |
-        echo "# Build & Coverage Report" > Report/report.md
-        echo "## Build Log (last 25 rows):" >> Report/report.md
-        echo '```' >> Report/report.md
-        tail -n 25 Report/build.log >> Report/report.md
-        echo "" >> Report/report.md
-        echo "## CSV of Jacoco Code Coverage:" >> Report/report.md
-        echo '```csv' >> Report/report.md
-        head -n 1 roman-number/target/site/jacoco/jacoco.csv >> Report/report.md
-        tail -n +2 roman-number/target/site/jacoco/jacoco.csv >> Report/report.md
-        echo '```' >> Report/report.md
-        cat Report/report.md > README.md
+- name: Write build report on README.md
+  run: |
+    if [ ! -f README.md ]; then
+      echo "# Build & Coverage Report" > README.md
+    fi
+    echo "## Build Log (last 25 rows):" >> Report/report.md
+    echo '' >> Report/report.md
+    tail -n 25 Report/build.log >> Report/report.md
+    echo "" >> Report/report.md
+    echo "## CSV of Jacoco Code Coverage:" >> Report/report.md
+    echo '```csv' >> Report/report.md
+    head -n 1 roman-number/target/site/jacoco/jacoco.csv >> Report/report.md
+    tail -n +2 roman-number/target/site/jacoco/jacoco.csv >> Report/report.md
+    echo '```' >> Report/report.md
+    cat Report/report.md >> README.md
+
+
         
     - name: Commit the README.md
       run: |
@@ -49,3 +53,8 @@ jobs:
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4
+      with:
+        files: roman-number/target/site/jacoco/jacoco.xml
