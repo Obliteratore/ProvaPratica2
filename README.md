@@ -1,6 +1,7 @@
-# Build & Coverage Report
+# Roman Number Converter
+[![codecov](https://codecov.io/gh/Obliteratore/ProvaPratica2/graph/badge.svg?token=NBFHJAEEA8)](https://codecov.io/gh/Obliteratore/ProvaPratica2)
 ## Build Log (last 25 rows):
-```
+
 [WARNING] Unable to locate Test Source XRef to link to - DISABLED
 [INFO] 
 [INFO] --- jacoco:0.8.13:report (report) @ roman-number ---
@@ -23,8 +24,8 @@ Audit done.
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  6.565 s
-[INFO] Finished at: 2025-05-11T14:40:15Z
+[INFO] Total time:  3.978 s
+[INFO] Finished at: 2025-05-12T07:49:09Z
 [INFO] ------------------------------------------------------------------------
 
 ## CSV of Jacoco Code Coverage:
